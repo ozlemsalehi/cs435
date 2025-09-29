@@ -38,7 +38,7 @@ After activation, your command prompt or terminal prompt should change to indica
 2. You can now launch jupyter notebook.
 
 ```bash
-jupyter notebook
+jupyter lab
 ```
 
 3. Deactivate the Conda environment when you're done.
