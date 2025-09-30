@@ -1,0 +1,8 @@
+qiskit[visualization]==1.2.4
+qiskit-aer>=0.14.0.1
+qutip>=4.7.3
+attrs>=22.2.0
+matplotlib
+numpy
+jupyterlab
+pylatexenc
