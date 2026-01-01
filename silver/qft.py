@@ -1,3 +1,4 @@
+
 from qiskit import QuantumRegister, ClassicalRegister, QuantumCircuit
 from qiskit_aer import StatevectorSimulator
 from math import pi
@@ -14,3 +15,7 @@ def qft(n, qubits, circuit):
             #Apply CR_k gate  
             circuit.cp(pi*2/2**(k), qubits[j],qubits[i])
             k=k+1 #Increment k at each step
+
+    for i in range(n//2):
+        circuit.swap(qubits[i],qubits[n-i-1])     
+
