@@ -1,8 +1,8 @@
-from qiskit.quantum_info.operators import Operator
-from qiskit.circuit.library import CPhaseGate
+from qiskit.circuit.library import PhaseGate
 from math import pi
 import numpy as np
 
-#uU = Operator([[1, 0, 0, 0],[0, 1, 0, 0],[0, 0, 1, 0],[0, 0, 0, -0.4762382+0.87931631j]])
+#Unitary matrix U with eigenvector |11> and eigenvalue e^{2 pi i phase}
+#U = diag(1, 1, 1, -0.4762382+0.87931631j)
 phase = 0.329
-U=Operator(CPhaseGate(2*pi*phase))
+U = PhaseGate(2*pi*phase).control().to_matrix()
