@@ -1,19 +1,20 @@
 from qiskit import QuantumRegister, ClassicalRegister, QuantumCircuit
-from qiskit_aer import StatevectorSimulator, UnitarySimulator
 from math import pi
 
-def iqft(n, qubits, circuit): 
-    for i in range(n//2):
-        circuit.swap(qubits[i],qubits[n-i-1])     
+def iqft(n, qubits, circuit):
+    # Qiskit ordering: qubits[0] is the least significant qubit, qubits[n-1] the most significant.
+    # The gates of qft() are applied in reverse order with negated angles.
 
-    #For each qubit
-    for i in range(n-1,-1,-1):
-        #Apply CR_k gates where j is the control and i is the target
-        k=n-i #We start with k=n-i
-        for j in range(n-1,i,-1):
-            #Apply CR_k gate  
-            circuit.cp(-pi*2/2**(k), qubits[j],qubits[i])
-            k=k-1 #Dencrement k at each step
+    #Swap the qubits
+    for i in range(n//2):
+        circuit.swap(qubits[i],qubits[n-i-1])
+
+    #For each qubit, starting from the least significant one
+    for i in range(n):
+        #Apply the inverse CR_k gates where j is the control and i is the target
+        for j in range(i):
+            k=i-j+1
+            circuit.cp(-2*pi/2**k, qubits[j],qubits[i])
 
         #Apply Hadamard to the qubit
         circuit.h(qubits[i])
