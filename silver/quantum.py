@@ -33,7 +33,7 @@ def angle_quantum_state(x,y):
 	return angle_degree	
 	
 def state_to_angles(current_quantum_state):
-	theta = 2*arcsin(abs(current_quantum_state[1],4))
+	theta = 2*arcsin(round(abs(current_quantum_state[1]), 4))
 	if(current_quantum_state[0] == 0 or current_quantum_state[1] == 0):
 		phi = 0
 	else:
