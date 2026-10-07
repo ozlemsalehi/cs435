@@ -61,22 +61,17 @@ def bv_oracle():
     return circuit
 
 def f(x):
-    if x=="000":
-        return "001"
-    elif x=="010":
-        return "001"
-    elif x=="011":
-        return "000"
-    elif x=="001":
-        return "000"
-    elif x=="100":
-        return "101"
-    elif x=="110":
-        return "001"
-    elif x=="111":
-        return "100"
-    elif x=="101":
-        return "100"
+    outputs = {
+        "000": "000",
+        "010": "000",
+        "001": "010",
+        "011": "010",
+        "100": "110",
+        "110": "110",
+        "101": "100",
+        "111": "100"
+    }
+    return outputs[x]
 
 def simon_oracle():
     qreg1 = QuantumRegister(3, "register_1")
